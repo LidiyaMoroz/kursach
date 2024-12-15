@@ -38,8 +38,11 @@ COPY . .
 # Устанавливаем зависимости Composer
 RUN composer install --prefer-dist --no-progress --no-scripts --no-interaction
 
-# Устанавливаем права доступа (при необходимости)
-RUN chown -R www-data:www-data /var/www/html
+
+RUN groupadd -g 1000 www
+RUN useradd -u 1000 -ms /bin/bash -g www www
+
+USER www
 
 # Открываем порт
 EXPOSE 9000
