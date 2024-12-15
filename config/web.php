@@ -24,7 +24,7 @@ $config = [
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'error/error',
         ],
         'mailer' => [
             'class' => \yii\symfonymailer\Mailer::class,
@@ -42,14 +42,20 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
+            'normalizer' => [
+                'class' => 'yii\web\UrlNormalizer',
+                'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_PERMANENT,
+                'collapseSlashes' => true,
+                'normalizeTrailingSlash' => true,
             ],
+            'rules' => [
+                '' => 'index/index'
+            ]
         ],
-        */
     ],
     'params' => $params,
 ];

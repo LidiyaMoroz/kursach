@@ -4,11 +4,7 @@
 /** @var string $content */
 
 use app\assets\AppAsset;
-use app\widgets\Alert;
-use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
-use yii\bootstrap5\Nav;
-use yii\bootstrap5\NavBar;
 
 AppAsset::register($this);
 
@@ -30,13 +26,13 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <?php $this->beginBody() ?>
 
 <header>
-
+    <?=$this->render('./header')?>
 </header>
 <main>
     <?=$content?>
 </main>
 <footer>
-    
+
 </footer>
 <?php $this->endBody() ?>
 </body>
