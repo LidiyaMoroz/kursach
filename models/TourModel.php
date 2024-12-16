@@ -17,19 +17,6 @@ class TourModel extends AbstractModel
             [['id'], 'unique']
         ];
     }
-    public static function getColumns()
-    {
-        return [
-            'ID',
-            'name',
-            'country',
-            'city',
-            'movement',
-            'food',
-            'price',
-            'accommodation'
-        ];
-    }
     public function addData(TourModel $model)
     {
         $sql = "
@@ -63,4 +50,5 @@ class TourModel extends AbstractModel
         ";
         return \Yii::$app->db->createCommand($sql)->execute();
     }
+
 }

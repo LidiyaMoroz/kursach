@@ -21,17 +21,6 @@ class TouristModel extends AbstractModel
             [['id'], 'unique']
         ];
     }
-    public function getColumns() : array
-    {
-        return [
-            'ID',
-            'Name',
-            'Passport',
-            'Gender',
-            'Age',
-            'Children'
-        ];
-    }
     public function addData(TouristModel $model)
     {
         $sql = "

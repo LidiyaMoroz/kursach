@@ -54,13 +54,13 @@ $this->title = 'Группы';
                 <td><?=$item['quantity']?></td>
                 <td>
                     <?=Html::a('<img src="/storage/icons/view.svg" alt="view" />',
-                        ['tourist/view', 'id' => $item['id']]
+                        ['group/view', 'id' => $item['id']]
                     )?>
                     <?=Html::a('<img src="/storage/icons/update.svg" alt="update" />',
-                        ['tourist/update', 'id' => $item['id']]
+                        ['group/update', 'id' => $item['id']]
                     )?>
                     <?=Html::a('<img src="/storage/icons/delete.svg" alt="delete" />',
-                        ['tourist/delete', 'id' => $item['id']]
+                        ['group/delete', 'id' => $item['id']]
                     )?>
                 </td>
             </tr>

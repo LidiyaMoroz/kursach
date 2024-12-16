@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-class GroupModel extends \yii\db\ActiveRecord
+class GroupModel extends AbstractModel
 {
     public static function tableName()
     {
@@ -12,7 +12,7 @@ class GroupModel extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'tour_id', 'quantity'], 'integer'],
-            [['name'], 'nvarchar'],
+            [['name'], 'string'],
             [['id', 'name', 'date_departure', 'date_arrival', 'tour_id', 'quantity'], 'required'],
             [['date_departure', 'date_arrival'], 'date'],
             [['id'], 'unique']
@@ -29,10 +29,33 @@ class GroupModel extends \yii\db\ActiveRecord
             'quantity'
         ];
     }
-    public static function getAllData()
+    public function addData(GroupModel $model)
     {
-        $sql = 'SELECT * FROM '. self::tableName();
-        $query = \Yii::$app->db->createCommand($sql);
-        return $query->queryAll();
+        $sql = "
+            insert into ".$this->tableName()." (id, name, date_departure, date_arrival, tour_id, quantity)
+            values
+                (
+                    coalesce((select max(id) from ".$this->tableName()."), 0) + 1,
+                    N'".$model->name."',
+                    N'".$model->date_departure."',
+                    N'".$model->date_arrival."',
+                    ".$model->tour_id.",
+                    ".$model->quantity."
+                );
+        ";
+        return \Yii::$app->db->createCommand($sql)->execute();
+    }
+    public function updateData($model)
+    {
+        $sql = "
+            update ".$this->tableName()."
+            set name = N'".$model->name."',
+                date_departure = N'".$model->date_departure."',
+                date_arrival = N'".$model->date_arrival."',
+                tour_id =".$model->tour_id.",
+                quantity = ".$model->quantity."
+            where id = ". $model->id ."
+        ";
+        return \Yii::$app->db->createCommand($sql)->execute();
     }
 }

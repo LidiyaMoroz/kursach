@@ -3,8 +3,9 @@
 use yii\helpers\Html;
 
 /** @var yii\web\View $this */
-/** @var app\models\TouristModel $model */
-/** @var array $toursDropDown */
+/** @var app\models\TourModel $model */
+/** @var array $groupsDropDown */
+/** @var array $hotelsDropDown */
 
 $this->title = 'Добавить отчетность';
 $this->params['breadcrumbs'][] = ['label' => 'Отчетность', 'url' => ['index']];
@@ -16,7 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
-        'toursDropDown' => $toursDropDown
+        'groupsDropDown' => $groupsDropDown,
+        'hotelsDropDown' => $hotelsDropDown
     ]) ?>
 
 </div>

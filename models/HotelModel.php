@@ -18,18 +18,6 @@ class HotelModel extends AbstractModel
             [['id'], 'unique']
         ];
     }
-    public static function getColumns()
-    {
-        return [
-            'ID',
-            'name',
-            'country',
-            'city',
-            'address',
-            'vacancies',
-            'hotel_type'
-        ];
-    }
     public function addData(HotelModel $model)
     {
         $sql = "
