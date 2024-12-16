@@ -11,6 +11,7 @@ echo Nav::widget([
     'items' => [
         ['label' => 'Tourist', 'url' => ['tourist/index']],
         ['label' => 'Group', 'url' => ['group/index']],
+        ['label' => 'Group Data', 'url' => ['group-data/index']],
         ['label' => 'Tour', 'url' => ['tour/index']],
         ['label' => 'Hotel', 'url' => ['hotel/index']],
         ['label' => 'Statement', 'url' => ['statement/index']],
