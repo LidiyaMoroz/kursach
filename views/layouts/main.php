@@ -5,6 +5,7 @@
 
 use app\assets\AppAsset;
 use yii\bootstrap5\Html;
+use yii\bootstrap5\Breadcrumbs;
 
 AppAsset::register($this);
 
@@ -26,10 +27,15 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <?php $this->beginBody() ?>
 
 <header>
-    <?=$this->render('./header')?>
+    <?=$this->render('_header')?>
 </header>
 <main>
-    <?=$content?>
+    <div class="container">
+        <?php if (!empty($this->params['breadcrumbs'])): ?>
+            <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs'], 'homeLink' => false]) ?>
+        <?php endif ?>
+        <?=$content?>
+    </div>
 </main>
 <footer>
 
