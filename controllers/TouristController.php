@@ -61,4 +61,8 @@ class TouristController extends Controller
         TouristModel::deleteById($id);
         return $this->redirect('index');
     }
+    public function actionView($id)
+    {
+
+    }
 }

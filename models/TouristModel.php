@@ -100,4 +100,8 @@ class TouristModel extends \yii\db\ActiveRecord
         ";
         return \Yii::$app->db->createCommand($sql)->execute();
     }
+    public static function getDataViewById($id)
+    {
+        
+    }
 }
