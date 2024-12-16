@@ -49,4 +49,16 @@ class HotelModel extends AbstractModel
         ";
         return \Yii::$app->db->createCommand($sql)->execute();
     }
+    public static function getDataViewById($id)
+    {
+        $sql = "
+            select 
+                h.name, h.country, h.city, h.address, h.vacancies, h.hotel_type,
+                s.id as state_id, s.date as state_date
+            from hotel as h
+            join statement as s on h.id = s.hotel_id
+            where h.id = " . $id;
+        $query = \Yii::$app->db->createCommand($sql);
+        return $query->queryAll();
+    }
 }

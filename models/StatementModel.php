@@ -44,4 +44,17 @@ class StatementModel extends AbstractModel
         ";
         return \Yii::$app->db->createCommand($sql)->execute();
     }
+    public static function getDataViewById($id)
+    {
+        $sql = "
+            select
+                s.date, g.id as group_id, g.name as group_name,
+                h.id as hotel_id, h.name as hotel_name, s.price
+            from statement as s
+            join [group] as g on s.group_id = g.id
+            join hotel as h on s.hotel_id = h.id
+            where s.id = " . $id;
+        $query = \Yii::$app->db->createCommand($sql);
+        return $query->queryall();
+    }
 }

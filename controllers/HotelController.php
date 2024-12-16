@@ -59,4 +59,11 @@ class HotelController extends Controller
             'items' => $model->searchData($search)
         ]);
     }
+    public function actionView($id)
+    {
+        $data = HotelModel::getDataViewById($id);
+        return $this->render('view', [
+            'data' => $data,
+        ]);
+    }
 }

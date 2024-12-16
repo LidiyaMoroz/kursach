@@ -50,5 +50,16 @@ class TourModel extends AbstractModel
         ";
         return \Yii::$app->db->createCommand($sql)->execute();
     }
-
+    public static function getDataViewById($id)
+    {
+        $sql = "
+            select 
+                t.name, t.country, t.city, t.movement, t.food, t.price, t.accommodation,
+                g.name as group_name, g.quantity as group_quantity, g.id as group_id
+            from tour as t
+            join [group] as g on t.id = g.tour_id
+            where t.id = " . $id;
+        $query = \Yii::$app->db->createCommand($sql);
+        return $query->queryOne();
+    }
 }

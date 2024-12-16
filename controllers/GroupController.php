@@ -72,4 +72,11 @@ class GroupController extends Controller
             'items' => $model->searchData($search)
         ]);
     }
+    public function actionView($id)
+    {
+        $data = GroupModel::getDataViewById($id);
+        return $this->render('view', [
+            'data' => $data,
+        ]);
+    }
 }

@@ -58,4 +58,20 @@ class GroupModel extends AbstractModel
         ";
         return \Yii::$app->db->createCommand($sql)->execute();
     }
+    public static function getDataViewById($id)
+    {
+        $sql = "
+            select 
+                g.name as group_name, g.date_departure as group_departure, g.date_arrival as group_arrival,
+                t.name as tourist_name, t.id as tourist_id,
+                tr.id as tour_id, tr.name as tour_name
+            from [group] as g
+            join group_data as gd on g.id = gd.group_id
+            join tour as tr on g.tour_id = tr.id
+            join tourist as t on gd.tourist_id = t.id                      
+            where g.id = ". $id ."
+        ";
+        $query = \Yii::$app->db->createCommand($sql);
+        return $query->queryAll();
+    }
 }

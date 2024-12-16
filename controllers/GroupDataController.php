@@ -67,4 +67,11 @@ class GroupDataController extends Controller
         GroupDataModel::deleteById($id);
         return $this->redirect('index');
     }
+    public function actionView($id)
+    {
+        $data = GroupDataModel::getDataViewById($id);
+        return $this->render('view', [
+            'data' => $data,
+        ]);
+    }
 }

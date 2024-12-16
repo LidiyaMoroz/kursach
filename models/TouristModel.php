@@ -52,6 +52,15 @@ class TouristModel extends AbstractModel
     }
     public static function getDataViewById($id)
     {
-
+        $sql = "
+            select 
+                t.name, t.passport, t.gender, t.age, t.children,
+                g.name as group_name, g.id as group_id
+            from tourist as t
+            JOIN group_data as gd on t.id = gd.tourist_id
+            JOIN [group] as g on gd.group_id = g.id
+            where t.id = ". $id;
+        $query = \Yii::$app->db->createCommand($sql);
+        return $query->queryAll();
     }
 }

@@ -59,4 +59,11 @@ class TourController extends Controller
             'items' => $model->searchData($search)
         ]);
     }
+    public function actionView($id)
+    {
+        $data = TourModel::getDataViewById($id);
+        return $this->render('view', [
+            'data' => $data,
+        ]);
+    }
 }

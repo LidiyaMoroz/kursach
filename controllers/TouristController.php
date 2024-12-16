@@ -63,6 +63,9 @@ class TouristController extends Controller
     }
     public function actionView($id)
     {
-
+        $data = TouristModel::getDataViewById($id);
+        return $this->render('view', [
+            'data' => $data
+        ]);
     }
 }

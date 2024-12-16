@@ -69,4 +69,11 @@ class StatementController extends Controller
         StatementModel::deleteById($id);
         return $this->redirect('index');
     }
+    public function actionView($id)
+    {
+        $data = StatementModel::getDataViewById($id);
+        return $this->render('view', [
+            'data' => $data,
+        ]);
+    }
 }
