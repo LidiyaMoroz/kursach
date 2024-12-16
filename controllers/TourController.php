@@ -2,24 +2,21 @@
 
 namespace app\controllers;
 
-use app\models\TouristModel;
+use app\models\TourModel;
 use yii\web\Controller;
 
-class TouristController extends Controller
+class TourController extends Controller
 {
     public function actionIndex()
     {
-        $model = new TouristModel();
-
-        $items = TouristModel::getAllData();
+        $items = TourModel::getAllData();
         return $this->render('index', [
-            'items' => $items,
-            'model' => $model
+           'items' => $items
         ]);
     }
     public function actionCreate()
     {
-        $model = new TouristModel();
+        $model = new TourModel();
         if ($this->request->isPost && $model->load($this->request->post())) {
             if ($model->addData($model)) {
                 return $this->redirect('index');
@@ -29,20 +26,11 @@ class TouristController extends Controller
             'model' => $model
         ]);
     }
-    public function actionSearch()
-    {
-        $model = new TouristModel();
-        $search = $this->request->post('search');
-
-        return $this->render('index', [
-            'model' => $model,
-            'items' => $model->searchData($search)
-        ]);
-    }
     public function actionUpdate($id)
     {
-        $modelData = TouristModel::getDataById($id);
-        $model = new TouristModel(current($modelData));
+        $modelData = TourModel::getDataById($id);
+
+        $model = new TourModel(current($modelData));
 
         if ($this->request->isPost && $model->load($this->request->post())) {
             if ($model->updateData($model)) {
@@ -56,11 +44,17 @@ class TouristController extends Controller
     }
     public function actionDelete($id)
     {
-        TouristModel::deleteById($id);
+        TourModel::deleteById($id);
         return $this->redirect('index');
     }
-    public function actionView($id)
+    public function actionSearch()
     {
+        $model = new TourModel();
+        $search = $this->request->post('search');
 
+        return $this->render('index', [
+            'model' => $model,
+            'items' => $model->searchData($search)
+        ]);
     }
 }

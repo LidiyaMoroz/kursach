@@ -18,4 +18,21 @@ class GroupModel extends \yii\db\ActiveRecord
             [['id'], 'unique']
         ];
     }
+    public static function getColumns()
+    {
+        return [
+            'ID',
+            'name',
+            'date_departure',
+            'date_arrival',
+            'tour_id',
+            'quantity'
+        ];
+    }
+    public static function getAllData()
+    {
+        $sql = 'SELECT * FROM '. self::tableName();
+        $query = \Yii::$app->db->createCommand($sql);
+        return $query->queryAll();
+    }
 }
