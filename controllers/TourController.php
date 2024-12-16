@@ -9,7 +9,9 @@ class TourController extends Controller
 {
     public function actionIndex()
     {
-        $items = TourModel::getAllData();
+        $sort = \Yii::$app->request->get('sort');
+
+        $items = $sort ? TourModel::getSortData('price', $sort) : TourModel::getAllData();
         return $this->render('index', [
            'items' => $items
         ]);

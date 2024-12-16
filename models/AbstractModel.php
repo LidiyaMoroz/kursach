@@ -54,4 +54,13 @@ class AbstractModel extends ActiveRecord
         $query = \Yii::$app->db->createCommand($sql);
         return array_column($query->queryAll(), 'COLUMN_NAME');
     }
+    public static function getSortData(string $param, string $sort)
+    {
+        $sql = '
+            SELECT * FROM '.static::tableName().'
+            ORDER BY '. $param .' '. $sort .'
+        ';
+        $query = \Yii::$app->db->createCommand($sql);
+        return $query->queryAll();
+    }
 }

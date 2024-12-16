@@ -11,7 +11,9 @@ class StatementController extends Controller
 {
     public function actionIndex()
     {
-        $items = StatementModel::getAllData();
+        $sort = \Yii::$app->request->get('sort');
+
+        $items = $sort ? StatementModel::getSortData('price', $sort) : StatementModel::getAllData();
         return $this->render('index',[
            'items' => $items
         ]);

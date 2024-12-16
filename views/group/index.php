@@ -38,7 +38,15 @@ $this->title = 'Группы';
         <thead>
             <tr>
                 <?php foreach (\app\models\GroupModel::getColumns() as $column) :?>
-                    <th scope="col"><?=$column?></th>
+                    <th scope="col">
+                        <?=$column !== 'quantity' ? $column
+                            : Html::a($column . '<img src="/storage/icons/sorting.svg" alt="sort" />',
+                                ['group/index', 'sort' => Yii::$app->request->get('sort') === 'asc' ? 'desc' : 'asc'],
+                                [
+                                    'style' => 'text-decoration:none;color: #000'
+                                ]
+                            )?>
+                    </th>
                 <?php endforeach;?>
                 <th scope="col">Actions</th>
             </tr>

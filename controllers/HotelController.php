@@ -9,7 +9,9 @@ class HotelController extends Controller
 {
     public function actionIndex()
     {
-        $items = HotelModel::getAllData();
+        $sort = \Yii::$app->request->get('sort');
+
+        $items = $sort ? HotelModel::getSortData('vacancies', $sort) : HotelModel::getAllData();
         return $this->render('index',[
             'items' => $items
         ]);

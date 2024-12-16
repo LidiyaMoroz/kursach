@@ -10,7 +10,9 @@ class GroupController extends Controller
 {
     public function actionIndex()
     {
-        $items = GroupModel::getAllData();
+        $sort = \Yii::$app->request->get('sort');
+
+        $items = $sort ? GroupModel::getSortData('quantity', $sort) : GroupModel::getAllData();
         return $this->render('index', [
             'items' => $items
         ]);

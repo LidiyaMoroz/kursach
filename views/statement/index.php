@@ -27,7 +27,15 @@ $this->title = 'Отчетность';
         <thead>
             <tr>
                 <?php foreach (\app\models\StatementModel::getColumns() as $column) :?>
-                    <th scope="col"><?=$column?></th>
+                    <th scope="col">
+                        <?=$column !== 'price' ? $column
+                            : Html::a($column . '<img src="/storage/icons/sorting.svg" alt="sort" />',
+                                ['statement/index', 'sort' => Yii::$app->request->get('sort') === 'asc' ? 'desc' : 'asc'],
+                                [
+                                    'style' => 'text-decoration:none;color: #000'
+                                ]
+                            )?>
+                    </th>
                 <?php endforeach;?>
                 <th scope="col">Actions</th>
             </tr>

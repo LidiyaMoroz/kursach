@@ -11,7 +11,9 @@ class TouristController extends Controller
     {
         $model = new TouristModel();
 
-        $items = TouristModel::getAllData();
+        $sort = \Yii::$app->request->get('sort');
+
+        $items = $sort ? TouristModel::getSortData('age', $sort) : TouristModel::getAllData();
         return $this->render('index', [
             'items' => $items,
             'model' => $model

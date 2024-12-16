@@ -38,7 +38,15 @@ $this->title = 'Туры';
         <thead>
             <tr>
                 <?php foreach (\app\models\TourModel::getColumns() as $column) :?>
-                    <th scope="col"><?=$column?></th>
+                    <th scope="col">
+                        <?=$column !== 'price' ? $column
+                            : Html::a($column . '<img src="/storage/icons/sorting.svg" alt="sort" />',
+                                ['tour/index', 'sort' => Yii::$app->request->get('sort') === 'asc' ? 'desc' : 'asc'],
+                                [
+                                    'style' => 'text-decoration:none;color: #000'
+                                ]
+                            )?>
+                    </th>
                 <?php endforeach;?>
                 <th scope="col">Actions</th>
             </tr>
