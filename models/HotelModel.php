@@ -53,6 +53,7 @@ class HotelModel extends AbstractModel
     {
         $sql = "
             select 
+                distinct 
                 h.name, h.country, h.city, h.address, h.vacancies, h.hotel_type,
                 s.id as state_id, s.date as state_date
             from hotel as h

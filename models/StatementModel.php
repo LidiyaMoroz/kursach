@@ -48,6 +48,7 @@ class StatementModel extends AbstractModel
     {
         $sql = "
             select
+                distinct 
                 s.date, g.id as group_id, g.name as group_name,
                 h.id as hotel_id, h.name as hotel_name, s.price
             from statement as s

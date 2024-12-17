@@ -48,6 +48,7 @@ class GroupDataModel extends AbstractModel
     {
         $sql = "
             select 
+                distinct 
                 gd.date_sale, t.name as tourist_name, t.id as tourist_id,
                 g.name as group_name, g.id as group_id, gd.price
             from group_data as gd

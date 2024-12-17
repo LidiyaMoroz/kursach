@@ -61,7 +61,7 @@ class GroupModel extends AbstractModel
     public static function getDataViewById($id)
     {
         $sql = "
-            select 
+            select distinct 
                 g.name as group_name, g.date_departure as group_departure, g.date_arrival as group_arrival,
                 t.name as tourist_name, t.id as tourist_id,
                 tr.id as tour_id, tr.name as tour_name

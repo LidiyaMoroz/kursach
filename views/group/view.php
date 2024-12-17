@@ -3,7 +3,7 @@
 /** @var yii\web\View $this */
 /** @var array $data */
 
-$this->title = 'Группа - ' . current($data)['group_name'];
+$this->title = 'Группа';
 $this->params['breadcrumbs'][] = ['label' => 'Группы', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

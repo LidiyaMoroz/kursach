@@ -54,6 +54,7 @@ class TourModel extends AbstractModel
     {
         $sql = "
             select 
+                distinct 
                 t.name, t.country, t.city, t.movement, t.food, t.price, t.accommodation,
                 g.name as group_name, g.quantity as group_quantity, g.id as group_id
             from tour as t
