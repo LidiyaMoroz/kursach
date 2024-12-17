@@ -47,7 +47,7 @@ class m241215_215751_add_tables extends Migration
                 date_arrival DATE NOT NULL,
                 tour_id INT NOT NULL,
                 quantity INT NOT NULL,
-                FOREIGN KEY (tour_id) REFERENCES tour(id)
+                FOREIGN KEY (tour_id) REFERENCES tour(id) ON DELETE CASCADE
             );
         ");
 
@@ -59,8 +59,8 @@ class m241215_215751_add_tables extends Migration
                 tourist_id INT NOT NULL,
                 group_id INT NOT NULL,
                 price INT NOT NULL,
-                FOREIGN KEY (tourist_id) REFERENCES tourist(id),
-                FOREIGN KEY (group_id) REFERENCES [group](id)
+                FOREIGN KEY (tourist_id) REFERENCES tourist(id) ON DELETE CASCADE,
+                FOREIGN KEY (group_id) REFERENCES [group](id) ON DELETE CASCADE
             );
         ");
 
@@ -85,8 +85,8 @@ class m241215_215751_add_tables extends Migration
                 group_id INT NOT NULL,
                 hotel_id INT NOT NULL,
                 price INT NOT NULL,
-                FOREIGN KEY (group_id) REFERENCES [group](id),
-                FOREIGN KEY (hotel_id) REFERENCES hotel(id)
+                FOREIGN KEY (group_id) REFERENCES [group](id) ON DELETE CASCADE, 
+                FOREIGN KEY (hotel_id) REFERENCES hotel(id) ON DELETE CASCADE
             );
         ");
     }
